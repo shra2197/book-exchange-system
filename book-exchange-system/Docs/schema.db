@@ -28,3 +28,4 @@ review  {
   reviewed_object_id int,	//id of reviewed book or user
   user_id int foreign key,	//user who gives review
 }
+
