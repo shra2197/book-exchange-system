@@ -1,0 +1,30 @@
+user{
+  id int primary key,
+  username varchar
+  user_role varchar
+  reward_points int
+  }
+
+books {
+  id int primary key,
+  title text
+  author varchar
+}
+
+
+rating  {
+  id int primary key, //rating id
+  rating int, //rating
+  rated_object_type varchar,  // book or user
+  rated_object_id int ,	//id of rated book or user
+  user_id int  foreign  key,	//user who gives rating
+}
+
+
+review  {
+  id int primary key, //rating id
+  comment text , //rating
+  reviewed_object_type varchar,  // book or user
+  reviewed_object_id int,	//id of reviewed book or user
+  user_id int foreign key,	//user who gives review
+}
