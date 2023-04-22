@@ -25,6 +25,8 @@ public class User {
         this.username = username;
         this.exchangeBookList = new ArrayList<>();
         this.userRole = UserRole.GUEST;
+        this.userReviews = new ArrayList<>();
+        this.userRatings = new ArrayList<>();
     }
 
     public void addExchangeBooksList(List<Book> myBookList) {

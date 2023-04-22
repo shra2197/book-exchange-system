@@ -46,7 +46,8 @@ public class BookExchangeServiceTest {
     public void testRegisterUser() {
         bookExchangeService.registerUser(user1);
         bookExchangeService.registerUser(user2);
-        assertEquals(2, bookExchangeService.getAllUsers().size());
+        bookExchangeService.registerUser(user3);
+        assertEquals(3, bookExchangeService.getAllUsers().size());
     }
 
     @Test
@@ -68,7 +69,7 @@ public class BookExchangeServiceTest {
 
     @Test
     public void testBrowseBooksForGuest() {
-        bookExchangeService.registerUser(user1);
+        bookExchangeService.registerUser(user1);//shraddha
         user1.addExchangeBooksList(bookList1);
         List<Book> bookList = bookExchangeService.browseBooks("Guest");
         assertEquals(3, bookList.size());
@@ -76,17 +77,19 @@ public class BookExchangeServiceTest {
 
     @Test
     public void testExchangeBooksForVerfied() {
-        bookExchangeService.registerUser(user1);
-        bookExchangeService.registerUser(user2);
-        bookExchangeService.addExchangeBooks("Shraddha", bookList1);
-        bookExchangeService.addExchangeBooks("John", bookList2);
+        bookExchangeService.registerUser(user1);//Shraddha
+        bookExchangeService.registerUser(user2);//John
+        bookExchangeService.addExchangeBooks("Shraddha", bookList1);//3
+        bookExchangeService.addExchangeBooks("John", bookList2);//2
         String res = bookExchangeService.exchangeBooks("Shraddha", Arrays.asList(bookList2.get(0))
                 , "John", Arrays.asList(bookList1.get(0)));
         assertEquals("Exchanged successfully", res);
         assertEquals(2, bookExchangeService.getUser("Shraddha").getExchangeBookList().size());
         assertEquals(1, bookExchangeService.getUser("John").getExchangeBookList().size());
 
+
     }
+
 
     @Test(expected = InvalidUserException.class)
     public void testExchangeBooksForGuest() {
