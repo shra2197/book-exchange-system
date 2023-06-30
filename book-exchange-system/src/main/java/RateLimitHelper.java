@@ -15,7 +15,7 @@ public class RateLimitHelper extends Thread{
 
     public void run(){
         for (int i = 1; i <= 65; i++) {
-            System.out.println("User Name - " + user+ ", Time - " + i + ", rate limit: " + hit(user, Instant.now()));
+            System.out.println("User Name - " + user+ ", Time - " + i + ", rate limit: " +  rateLimit.hit(user, Instant.now()));
             try {
                 sleep(1000);
             } catch (InterruptedException e) {
@@ -23,9 +23,6 @@ public class RateLimitHelper extends Thread{
             }
         }
         System.out.println("DONE! " + getName());
-    }
-    public boolean hit(String user, Instant ts) {
-        return rateLimit.hit(user, ts);
     }
 
     public static void main(String[] args) {

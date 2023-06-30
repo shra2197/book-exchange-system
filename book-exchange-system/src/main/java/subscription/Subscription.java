@@ -1,30 +1,26 @@
 package subscription;
 
-import java.util.Date;
+import lombok.Data;
 
+import java.time.LocalDate;
+@Data
 public class Subscription {
     private Plan plan;
-    private Date startDate;
+    private LocalDate startDate;
 
     public Plan getPlan() {
         return plan;
     }
 
-
-
     public void setPlan(Plan plan) {
         this.plan = plan;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Subscription(Plan plan, Date startDate) {
+    public Subscription(Plan plan, LocalDate startDate) {
         this.plan = plan;
         this.startDate = startDate;
     }

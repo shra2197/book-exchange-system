@@ -1,17 +1,19 @@
 package subscription;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Customer {
     private String name;
     private String id;
-    List<Product>products;
+    Map<String,Product> products;
 
     public Customer(String name, String id) {
         this.name = name;
         this.id = id;
-        this.products = new ArrayList<>();
+        this.products = new HashMap<>();
     }
 
     public String getName() {
@@ -30,11 +32,16 @@ public class Customer {
         this.id = id;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public Product getProducts(String productId) {
+        return products.get(productId);
+    }
+
+    public Map<String,Double>getProductCost(String productId){
+        final Product product = products.get(productId);
+        return product.getLastTwelveMonthCost();
     }
 
     public void addProduct(Product product) {
-       this.products.add(product);
+       this.products.put(product.getProductId(),product);
     }
 }
